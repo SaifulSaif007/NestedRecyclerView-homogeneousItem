@@ -3,11 +3,12 @@ package com.example.nestedrecyclerview_homogeneousitem.ViewModel;
 import com.example.nestedrecyclerview_homogeneousitem.Models.Child;
 import com.example.nestedrecyclerview_homogeneousitem.Models.Parent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParentDataFactory {
 
-    List<Parent> parentList;
+    List<Parent> parentList = new ArrayList<>();
 
 
     public List<Parent> parentList(){

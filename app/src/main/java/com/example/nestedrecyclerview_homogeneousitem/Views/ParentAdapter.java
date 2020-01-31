@@ -1,10 +1,13 @@
 package com.example.nestedrecyclerview_homogeneousitem.Views;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nestedrecyclerview_homogeneousitem.Models.Parent;
@@ -21,16 +24,28 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
         this.parentList = parentList;
     }
 
+    private RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
+
 
     @NonNull
     @Override
     public ParentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.parent_recycler_item, parent, false);
+        return new ParentViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ParentViewHolder holder, int position) {
+        Parent present = parentList.get(position);
+        holder.genre.setText(present.getGenre());
 
+        LinearLayoutManager childLayoutManager = new LinearLayoutManager(holder.rv_child.getContext(), RecyclerView.HORIZONTAL, false);
+        childLayoutManager.setInitialPrefetchItemCount(4);
+
+        holder.rv_child.setLayoutManager(childLayoutManager);
+        holder.rv_child.setAdapter(new ChildAdapter(present.getChildren()));
+        holder.rv_child.setRecycledViewPool(viewPool);
     }
 
     @Override
