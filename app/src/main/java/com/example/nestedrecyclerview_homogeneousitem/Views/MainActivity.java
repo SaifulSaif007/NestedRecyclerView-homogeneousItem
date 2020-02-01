@@ -6,11 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.nestedrecyclerview_homogeneousitem.R;
 import com.example.nestedrecyclerview_homogeneousitem.ViewModel.ParentDataFactory;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ParentAdapter.ParentItemClick {
 
     ParentDataFactory parentDataFactory;
 
@@ -26,18 +27,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initRecycler() {
+
         RecyclerView recyclerView =  findViewById(R.id.rv_parent);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 
         recyclerView.setLayoutManager(layoutManager);
 
-        ParentAdapter parentAdapter = new ParentAdapter(parentDataFactory.parentList());
-
+        ParentAdapter parentAdapter = new ParentAdapter(parentDataFactory.parentList(), this);
 
         recyclerView.setAdapter(parentAdapter);
 
+    }
 
-
+    @Override
+    public void parentClick(int position) {
+        Log.e("Parent", ""+ position);
     }
 }

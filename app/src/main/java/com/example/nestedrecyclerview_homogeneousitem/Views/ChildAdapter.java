@@ -21,9 +21,11 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
 
 
     List<Child> childList;
+    itemClickListner clickListner;
 
-    public ChildAdapter(List<Child> childList) {
+    public ChildAdapter(List<Child> childList, itemClickListner listner) {
         this.childList = childList;
+        this.clickListner = listner;
     }
 
     @NonNull
@@ -31,7 +33,7 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
     public ChildViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.child_recycler_item, parent, false);
-        return new ChildViewHolder(v);
+        return new ChildViewHolder(v, clickListner);
     }
 
     @Override
@@ -53,16 +55,29 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
     }
 
 
-    class ChildViewHolder extends RecyclerView.ViewHolder {
+    class ChildViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
          TextView Title;
          ImageView Image;
+         ChildAdapter.itemClickListner clickListner;
 
-        private ChildViewHolder(@NonNull View itemView) {
+        private ChildViewHolder(@NonNull View itemView, itemClickListner listner) {
             super(itemView);
 
             Title = itemView.findViewById(R.id.movie_title);
             Image = itemView.findViewById(R.id.movie_image);
+            this.clickListner = listner;
+            itemView.setOnClickListener(this);
         }
+
+
+        @Override
+        public void onClick(View v) {
+            clickListner.onItemClick(getAdapterPosition());
+        }
+    }
+
+    public interface itemClickListner {
+        void onItemClick(int position);
     }
 }
