@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.nestedrecyclerview_homogeneousitem.Models.Child;
 import com.example.nestedrecyclerview_homogeneousitem.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -36,7 +37,12 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
     @Override
     public void onBindViewHolder(@NonNull ChildViewHolder holder, int position) {
 
-        holder.Image.setImageResource(childList.get(position).getImage());
+        Picasso.get().
+                load(childList.get(position).getImage())
+                .resize(480,640)
+                .onlyScaleDown()
+                .into(holder.Image);
+
         holder.Title.setText(childList.get(position).getTitle());
 
     }
