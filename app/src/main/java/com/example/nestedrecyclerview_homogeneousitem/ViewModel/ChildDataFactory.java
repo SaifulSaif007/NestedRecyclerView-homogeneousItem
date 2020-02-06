@@ -10,8 +10,8 @@ public class ChildDataFactory {
 
     List<Child> childList = new ArrayList<>();
 
-    public List<Child> getChilds(){
 
+    public ChildDataFactory() {
 
         childList.add(new Child("Avengers", R.drawable.avengers));
         childList.add(new Child("Venom", R.drawable.venom));
@@ -22,10 +22,17 @@ public class ChildDataFactory {
         childList.add(new Child("Shawshank Redemption",R.drawable.shawshank));
         childList.add(new Child("A Star is Born", R.drawable.starisborn));
         childList.add(new Child("Star War", R.drawable.starwar));
+    }
 
+
+
+    public List<Child> getChilds(){
 
         return childList;
     }
 
+    public Child getChild(int i){
+        return childList.get(i);
+    }
 
 }

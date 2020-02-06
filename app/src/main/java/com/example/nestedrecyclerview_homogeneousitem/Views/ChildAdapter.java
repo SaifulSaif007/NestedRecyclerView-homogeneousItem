@@ -1,6 +1,8 @@
 package com.example.nestedrecyclerview_homogeneousitem.Views;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.nestedrecyclerview_homogeneousitem.Models.Child;
 import com.example.nestedrecyclerview_homogeneousitem.R;
 import com.squareup.picasso.Picasso;
@@ -22,10 +24,12 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
 
     List<Child> childList;
     itemClickListner clickListner;
+    Context context;
 
-    public ChildAdapter(List<Child> childList, itemClickListner listner) {
+    public ChildAdapter(List<Child> childList, itemClickListner listner, Context context) {
         this.childList = childList;
         this.clickListner = listner;
+        this.context = context;
     }
 
     @NonNull
@@ -68,16 +72,23 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
             Image = itemView.findViewById(R.id.movie_image);
             this.clickListner = listner;
             itemView.setOnClickListener(this);
+
+
         }
 
 
         @Override
         public void onClick(View v) {
             clickListner.onItemClick(getAdapterPosition());
+
+            Intent intent = new Intent("custom-message");
+
+            intent.putExtra("item", ""  + (getAdapterPosition()));
+            LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
         }
     }
 
     public interface itemClickListner {
-        void onItemClick(int position);
+        int onItemClick(int position);
     }
 }
