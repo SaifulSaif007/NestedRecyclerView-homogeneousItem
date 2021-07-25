@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NestedRecyclerView_homogeneousItem.iml" filepath="$PROJECT_DIR$/NestedRecyclerView_homogeneousItem.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/NestedRecyclerView_homogeneousItem.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/NestedRecyclerView_homogeneousItem.app.iml" />
     </modules>
   </component>
 </project>
