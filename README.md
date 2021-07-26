@@ -1,11 +1,22 @@
 # Simple Nested RecyclerView 
 
+Used static List Item for child & parent of recyclerview
 
-* Handeled OnClickListner for items
+* Handeled OnClickListner for items by using broadcast receiver
 
 ---
 
 # Screen Shot
 
-
-![Screenshot_1627242471](https://user-images.githubusercontent.com/29112564/126911675-1a20ad3c-dda2-4dc6-be72-9033c7cd5c08.png)
+<table>
+  <tr>
+    <td> </td>
+     <td> </td>
+  </tr>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/29112564/127026336-0d2de70a-a470-4f0a-aab0-a7edb03f6bec.png" > </td>
+    <td><img src="https://user-images.githubusercontent.com/29112564/127026733-63716074-0950-4948-93b0-0a2817bd567e.png" ></td>
+  </tr>
+ </table>
+ 
+ 
