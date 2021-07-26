@@ -26,9 +26,8 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
     itemClickListner clickListner;
     Context context;
 
-    public ChildAdapter(List<Child> childList, itemClickListner listner, Context context) {
+    public ChildAdapter(List<Child> childList, Context context) {
         this.childList = childList;
-        this.clickListner = listner;
         this.context = context;
     }
 
@@ -37,7 +36,7 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
     public ChildViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.child_recycler_item, parent, false);
-        return new ChildViewHolder(v, clickListner);
+        return new ChildViewHolder(v);
     }
 
     @Override
@@ -63,14 +62,12 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
 
          TextView Title;
          ImageView Image;
-         ChildAdapter.itemClickListner clickListner;
 
-        private ChildViewHolder(@NonNull View itemView, itemClickListner listner) {
+        private ChildViewHolder(@NonNull View itemView) {
             super(itemView);
 
             Title = itemView.findViewById(R.id.movie_title);
             Image = itemView.findViewById(R.id.movie_image);
-            this.clickListner = listner;
             itemView.setOnClickListener(this);
 
 
@@ -79,16 +76,15 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
 
         @Override
         public void onClick(View v) {
-            clickListner.onItemClick(getAdapterPosition());
-
+            String item = childList.get(getLayoutPosition()).getTitle();
             Intent intent = new Intent("custom-message");
 
-            intent.putExtra("item", ""  + (getAdapterPosition()));
+            intent.putExtra("item", ""  + item);
             LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
         }
     }
 
     public interface itemClickListner {
-        int onItemClick(int position);
+        void onItemClick(int position);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.nestedrecyclerview_homogeneousitem.ViewModel;
+package com.example.nestedrecyclerview_homogeneousitem.DataStore;
 
 import com.example.nestedrecyclerview_homogeneousitem.Models.Child;
 import com.example.nestedrecyclerview_homogeneousitem.R;

@@ -1,9 +1,10 @@
-package com.example.nestedrecyclerview_homogeneousitem.ViewModel;
+package com.example.nestedrecyclerview_homogeneousitem.DataStore;
 
 import com.example.nestedrecyclerview_homogeneousitem.Models.Child;
 import com.example.nestedrecyclerview_homogeneousitem.Models.Parent;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ParentDataFactory {
@@ -24,7 +25,9 @@ public class ParentDataFactory {
 
     private List<Child> getChilds() {
         ChildDataFactory childDataFactory = new ChildDataFactory();
-        return childDataFactory.getChilds();
+        List<Child>  children = childDataFactory.getChilds();
+        Collections.shuffle(children);
+        return children;
     }
 
 }

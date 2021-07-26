@@ -13,11 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nestedrecyclerview_homogeneousitem.Models.Parent;
 import com.example.nestedrecyclerview_homogeneousitem.R;
-import com.example.nestedrecyclerview_homogeneousitem.ViewModel.ParentDataFactory;
 
 import java.util.List;
 
-public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentViewHolder> implements ChildAdapter.itemClickListner{
+public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentViewHolder> {
 
 
     List<Parent>parentList;
@@ -48,7 +47,7 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
         childLayoutManager.setInitialPrefetchItemCount(4);
 
         holder.rv_child.setLayoutManager(childLayoutManager);
-        holder.rv_child.setAdapter(new ChildAdapter(present.getChildren(), this, context));
+        holder.rv_child.setAdapter(new ChildAdapter(present.getChildren(), context));
         holder.rv_child.setRecycledViewPool(viewPool);
     }
 
@@ -57,11 +56,6 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
         return parentList.size();
     }
 
-    @Override
-    public int onItemClick(int position) {
-        Log.e("Clicked", ""+ position);
-        return  position;
-    }
 
     public class ParentViewHolder extends RecyclerView.ViewHolder  {
 

@@ -10,17 +10,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
+import com.example.nestedrecyclerview_homogeneousitem.DataStore.ParentDataFactory;
 import com.example.nestedrecyclerview_homogeneousitem.Models.Child;
 import com.example.nestedrecyclerview_homogeneousitem.R;
-import com.example.nestedrecyclerview_homogeneousitem.ViewModel.ChildDataFactory;
-import com.example.nestedrecyclerview_homogeneousitem.ViewModel.ParentDataFactory;
+import com.example.nestedrecyclerview_homogeneousitem.DataStore.ChildDataFactory;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity{
 
     ParentDataFactory parentDataFactory;
     ChildDataFactory childDataFactory;
@@ -65,11 +64,9 @@ public class MainActivity extends AppCompatActivity  {
         public void onReceive(Context context, Intent intent) {
             // Get extra data included in the Intent
 
-            String ItemName = intent.getStringExtra("item");
-            int pos = Integer.parseInt(ItemName);
+            String itemName = intent.getStringExtra("item");
 
-            Toast.makeText(MainActivity.this,
-                    childDataFactory.getChild(pos).getTitle() +" " ,Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, itemName  ,Toast.LENGTH_SHORT).show();
         }
     };
 
