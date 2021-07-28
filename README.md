@@ -1,5 +1,6 @@
 # Simple Nested RecyclerView 
 
+
 Used static List Item for child & parent of recyclerview
 
 * Handeled item click events and send data to ui by using broadcast receiver
